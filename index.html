@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>For You ❤️</title>
   <!-- Clean Professional Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,6 +20,8 @@
       overflow-x: hidden;
       background: #0a0a0a;
       color: #ffffff;
+      width: 100%;
+      min-height: 100vh;
     }
 
     /* Dark Love Theme Colors */
@@ -154,7 +156,7 @@
       justify-content: center;
       align-items: center;
       perspective: 2500px;
-      padding: 20px;
+      padding: 15px;
     }
 
     /* Page 1 - Welcome Page */
@@ -168,8 +170,14 @@
       position: relative;
       background: linear-gradient(135deg, rgba(10,10,10,0.9), rgba(26,26,26,0.9));
       backdrop-filter: blur(10px);
-      padding: 40px;
+      padding: 20px;
       animation: pageGlow 4s infinite alternate;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .welcome-page.hidden {
+      display: none;
     }
 
     @keyframes pageGlow {
@@ -181,6 +189,7 @@
       text-align: center;
       max-width: 900px;
       animation: fadeInUp 1.5s ease;
+      padding: 20px;
     }
 
     @keyframes fadeInUp {
@@ -196,7 +205,7 @@
 
     .welcome-title {
       font-family: 'Playfair Display', serif;
-      font-size: 5em;
+      font-size: clamp(3em, 15vw, 5em);
       font-weight: 700;
       color: var(--red-bright);
       text-shadow: 0 0 40px rgba(255, 77, 77, 0.6);
@@ -211,27 +220,28 @@
     }
 
     .welcome-message {
-      font-size: 2em;
+      font-size: clamp(1.5em, 6vw, 2em);
       line-height: 1.5;
       color: var(--text-soft);
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
       font-family: 'Dancing Script', cursive;
+      padding: 0 10px;
     }
 
     .welcome-buttons {
       display: flex;
-      gap: 30px;
+      gap: 20px;
       justify-content: center;
       flex-wrap: wrap;
     }
 
     /* Professional 3D Buttons */
     .btn {
-      padding: 18px 45px;
-      font-size: 1.2em;
+      padding: 15px 30px;
+      font-size: clamp(1em, 4vw, 1.2em);
       font-weight: 500;
       border: none;
       border-radius: 60px;
@@ -246,9 +256,11 @@
       font-family: 'Montserrat', sans-serif;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       transform-style: preserve-3d;
       transform: perspective(1000px) translateZ(0);
+      min-width: 160px;
+      justify-content: center;
     }
 
     .btn:hover {
@@ -286,13 +298,14 @@
 
     /* 3D Card for Pages 2 & 3 - SEPARATE PAGES */
     .page-card {
-      width: 650px;
-      max-width: 90vw;
+      width: 100%;
+      max-width: 650px;
       min-height: 550px;
       position: relative;
       transform-style: preserve-3d;
       transition: transform 0.3s ease;
       display: none;
+      margin: 0 auto;
     }
 
     .page-card.active {
@@ -314,7 +327,7 @@
     .card-content {
       width: 100%;
       min-height: 550px;
-      border-radius: 40px;
+      border-radius: 30px;
       overflow: hidden;
       box-shadow: 
         0 30px 60px rgba(0, 0, 0, 0.6),
@@ -323,7 +336,7 @@
       background: rgba(42, 42, 42, 0.95);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(139, 0, 0, 0.4);
-      padding: 50px;
+      padding: 30px 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -339,12 +352,13 @@
     /* Typography */
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 4em;
+      font-size: clamp(2.5em, 10vw, 4em);
       font-weight: 700;
       color: var(--red-bright);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-shadow: 0 0 40px rgba(255, 77, 77, 0.6);
       animation: textGlow 2s infinite alternate;
+      text-align: center;
     }
 
     @keyframes textGlow {
@@ -354,27 +368,29 @@
 
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.8em;
+      font-size: clamp(2em, 8vw, 2.8em);
       font-weight: 600;
       color: var(--gold-accent);
       margin-bottom: 20px;
+      text-align: center;
     }
 
     h3 {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.5em;
+      font-size: clamp(1.8em, 7vw, 2.5em);
       color: var(--red-soft);
-      margin: 15px 0;
+      margin: 10px 0;
+      text-align: center;
     }
 
     /* Poem Styling */
     .poem-line-special {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.2em;
+      font-size: clamp(1.5em, 6vw, 2.2em);
       color: var(--text-light);
       text-align: center;
-      margin: 25px 0;
-      padding: 20px 30px;
+      margin: 20px 0;
+      padding: 15px 20px;
       background: rgba(10, 10, 10, 0.6);
       border-radius: 60px;
       border: 2px solid var(--red-deep);
@@ -382,6 +398,8 @@
       animation: poemGlow 3s infinite alternate;
       transform-style: preserve-3d;
       transform: perspective(500px) translateZ(15px);
+      width: 100%;
+      max-width: 500px;
     }
 
     @keyframes poemGlow {
@@ -391,44 +409,32 @@
 
     .poem-text {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.5em;
+      font-size: clamp(1.8em, 7vw, 2.5em);
       line-height: 1.4;
       color: var(--text-light);
       text-align: center;
-      margin: 20px 0;
-    }
-
-    .love-quote {
-      font-size: 2em;
-      color: var(--gold-accent);
-      font-style: italic;
-      margin: 20px 0;
-    }
-
-    p {
-      font-size: 1.2em;
-      line-height: 1.8;
-      color: var(--text-soft);
-      text-align: center;
       margin: 15px 0;
+      padding: 0 10px;
     }
 
     /* Song Indicator */
     .song-indicator {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.1em;
+      font-size: clamp(0.9em, 3.5vw, 1.1em);
       color: var(--text-light);
-      margin: 20px 0;
-      padding: 12px 30px;
+      margin: 15px 0;
+      padding: 10px 20px;
       background: rgba(10, 10, 10, 0.8);
       border-radius: 60px;
       backdrop-filter: blur(5px);
       border: 1px solid var(--red-deep);
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       transform: translateZ(20px);
       animation: indicatorFloat 3s infinite alternate;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     @keyframes indicatorFloat {
@@ -448,13 +454,13 @@
 
     /* Audio Player */
     .audio-player {
-      margin: 25px 0;
+      margin: 15px 0;
       width: 100%;
       max-width: 400px;
       background: rgba(10, 10, 10, 0.8);
       backdrop-filter: blur(10px);
       border-radius: 80px;
-      padding: 15px 25px;
+      padding: 12px 20px;
       border: 1px solid var(--red-deep);
       transform: translateZ(25px);
       transition: all 0.3s ease;
@@ -474,22 +480,25 @@
     .player-controls {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
       width: 100%;
     }
 
     .player-controls button {
-      width: 48px;
-      height: 48px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       border: none;
       background: linear-gradient(135deg, var(--red-deep), var(--red-bright));
       color: white;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      font-size: 1.2em;
+      font-size: 1.1em;
       flex-shrink: 0;
       transform: translateZ(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .player-controls button:hover {
@@ -523,26 +532,45 @@
     }
 
     .time-display {
-      font-size: 0.85em;
+      font-size: 0.75em;
       color: var(--text-soft);
       text-align: right;
     }
 
-    /* Navigation Dots */
+    /* Navigation Dots - Mobile Optimized */
     .nav-dots {
       position: fixed;
-      right: 25px;
-      top: 50%;
-      transform: translateY(-50%) translateZ(50px);
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateZ(50px);
       display: flex;
-      flex-direction: column;
-      gap: 18px;
+      flex-direction: row;
+      gap: 15px;
       z-index: 100;
+      background: rgba(10, 10, 10, 0.6);
+      padding: 10px 20px;
+      border-radius: 60px;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--red-deep);
+    }
+
+    @media (min-width: 768px) {
+      .nav-dots {
+        right: 25px;
+        left: auto;
+        top: 50%;
+        transform: translateY(-50%) translateZ(50px);
+        flex-direction: column;
+        background: transparent;
+        padding: 0;
+        border: none;
+        backdrop-filter: none;
+      }
     }
 
     .nav-dot {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: rgba(139, 0, 0, 0.3);
       cursor: pointer;
@@ -553,38 +581,51 @@
 
     .nav-dot.active {
       background: var(--red-bright);
-      transform: scale(2) translateZ(30px);
-      box-shadow: 0 0 40px var(--red-bright);
+      transform: scale(1.8) translateZ(20px);
+      box-shadow: 0 0 30px var(--red-bright);
     }
 
     .nav-dot:hover {
       background: var(--gold-accent);
-      transform: scale(1.6) translateZ(15px);
+      transform: scale(1.5) translateZ(10px);
     }
 
     .nav-dot::before {
       content: attr(data-tooltip);
       position: absolute;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
       background: var(--dark-card);
       color: white;
-      padding: 6px 15px;
-      border-radius: 30px;
-      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
       white-space: nowrap;
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
       border: 1px solid var(--red-deep);
       font-weight: 500;
+      z-index: 101;
+    }
+
+    @media (min-width: 768px) {
+      .nav-dot::before {
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-dot::before {
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
 
     .nav-dot:hover::before {
       opacity: 1;
       visibility: visible;
-      right: 35px;
     }
 
     /* Celebration Overlay */
@@ -601,7 +642,7 @@
     .celebration-item {
       position: absolute;
       animation: celebrate 4s ease-out forwards;
-      font-size: 35px;
+      font-size: clamp(20px, 8vw, 35px);
       filter: drop-shadow(0 0 15px rgba(255, 77, 77, 0.8));
     }
 
@@ -648,7 +689,7 @@
     }
 
     .loader-heart {
-      font-size: 70px;
+      font-size: clamp(50px, 15vw, 70px);
       animation: loaderBeat 1.5s infinite;
       color: var(--red-bright);
     }
@@ -661,9 +702,18 @@
     }
 
     .loader p {
-      margin-top: 20px;
-      font-size: 1.2em;
+      margin-top: 15px;
+      font-size: clamp(1em, 4vw, 1.2em);
       color: var(--text-soft);
+    }
+
+    /* Utility classes */
+    .button-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 15px 0;
     }
   </style>
 </head>
@@ -699,10 +749,10 @@
 
   <!-- Main Container -->
   <div class="container">
-    <!-- PAGE 1 - Welcome Page (from your screenshot) -->
-    <div id="welcome" class="welcome-page active-page">
+    <!-- PAGE 1 - Welcome Page -->
+    <div id="welcome" class="welcome-page">
       <div class="welcome-content">
-        <h1 class="welcome-title">for you</h1>
+        <h1 class="welcome-title">For you</h1>
         <div class="welcome-message">
           In a world of<br>
           shadows, you're my<br>
@@ -728,8 +778,8 @@
           "I love you more than you know"
         </div>
         
-        <button class="btn" style="margin: 30px 0;" onclick="feelItCelebration()">
-          Feel <i class="fas fa-heart"></i> my love
+        <button class="btn" style="margin: 20px 0;" onclick="feelItCelebration()">
+          Feel My Love <i class="fas fa-heart"></i> 
         </button>
         
         <button class="btn btn-outline" onclick="showPage('welcome')">
@@ -742,7 +792,6 @@
     <div class="page-card" id="page3">
       <div class="card-content">
         <h1>I Love You</h1>
-       
         
         <!-- Beautiful quote -->
         <div class="poem-text">
@@ -753,7 +802,7 @@
         <!-- Tamil Love Song -->
         <div class="song-indicator">
           <i class="fas fa-music"></i>
-          <span>Feel my love </span>
+          <span>Feel my love</span>
           <i class="fas fa-heart"></i>
         </div>
         
@@ -775,7 +824,7 @@
           </div>
         </div>
 
-        <div style="display: flex; gap: 15px; margin-top: 20px;">
+        <div class="button-group">
           <button class="btn" onclick="startCelebration()">
             <i class="fas fa-heart"></i> Celebrate
           </button>
@@ -789,7 +838,7 @@
 
   <!-- Audio Element 1 - Welcome Music -->
   <audio id="welcomeSong" loop preload="auto">
-    <source src="music2.mp3" type="audio/mpeg">
+    <source src="" type="audio/mpeg">
   </audio>
 
   <!-- Audio Element 2 - Tamil Love Song -->
@@ -809,7 +858,7 @@
     });
 
     // Create 3D Particles
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 50; i++) {
       const particle = document.createElement('div');
       particle.className = 'particle-3d';
       particle.style.left = Math.random() * 100 + '%';
@@ -848,9 +897,10 @@
       canvas.height = window.innerHeight;
     }
     resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     const particles = [];
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 50; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -959,13 +1009,13 @@
     // Page Navigation - 3 Separate Pages
     function showPage(pageId) {
       // Hide all pages
-      document.getElementById('welcome').classList.remove('active-page');
+      document.getElementById('welcome').style.display = 'none';
       document.getElementById('page2').classList.remove('active');
       document.getElementById('page3').classList.remove('active');
       
       // Show selected page
       if (pageId === 'welcome') {
-        document.getElementById('welcome').classList.add('active-page');
+        document.getElementById('welcome').style.display = 'flex';
       } else {
         document.getElementById(pageId).classList.add('active');
       }
@@ -1005,14 +1055,14 @@
       const celebration = document.getElementById('celebration');
       const items = ['❤️', '💖', '💕', '💗', '🌹', '🌸', '🌺', '✨', '💫', '⭐', '🖤', '💘', '💓', '💝'];
       
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 150; i++) {
         setTimeout(() => {
           const item = document.createElement('div');
           item.className = 'celebration-item';
           item.innerHTML = items[Math.floor(Math.random() * items.length)];
           item.style.left = Math.random() * 100 + '%';
           item.style.top = Math.random() * 100 + '%';
-          item.style.fontSize = (Math.random() * 40 + 20) + 'px';
+          item.style.fontSize = (Math.random() * 30 + 15) + 'px';
           item.style.animationDuration = (Math.random() * 3 + 3) + 's';
           item.style.animationDelay = Math.random() * 0.5 + 's';
           celebration.appendChild(item);
@@ -1035,14 +1085,14 @@
       const celebration = document.getElementById('celebration');
       const items = ['❤️', '💖', '💕', '💗', '🌹', '🌸', '🌺', '✨', '💫', '⭐', '🖤', '💘', '💓', '💝', '🌷', '🌼'];
       
-      for (let i = 0; i < 300; i++) {
+      for (let i = 0; i < 200; i++) {
         setTimeout(() => {
           const item = document.createElement('div');
           item.className = 'celebration-item';
           item.innerHTML = items[Math.floor(Math.random() * items.length)];
           item.style.left = Math.random() * 100 + '%';
           item.style.top = Math.random() * 100 + '%';
-          item.style.fontSize = (Math.random() * 50 + 25) + 'px';
+          item.style.fontSize = (Math.random() * 40 + 20) + 'px';
           item.style.animationDuration = (Math.random() * 4 + 3) + 's';
           item.style.color = Math.random() > 0.5 ? 'var(--red-bright)' : 'var(--gold-accent)';
           celebration.appendChild(item);
@@ -1062,15 +1112,13 @@
           const rect = card.getBoundingClientRect();
           const x = (e.clientX - rect.left) / rect.width - 0.5;
           const y = (e.clientY - rect.top) / rect.height - 0.5;
-          card.style.transform = `rotateY(${x * 20}deg) rotateX(${-y * 20}deg) translateZ(30px)`;
+          card.style.transform = `rotateY(${x * 15}deg) rotateX(${-y * 15}deg) translateZ(20px)`;
         }
       });
     });
 
-    window.addEventListener('resize', resizeCanvas);
+    // Initialize with welcome page
     showPage('welcome');
   </script>
 </body>
 </html>
-
-
