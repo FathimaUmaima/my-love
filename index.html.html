@@ -1,0 +1,1067 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You ❤️</title>
+  <!-- Clean Professional Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      background: #0a0a0a;
+      color: #ffffff;
+    }
+
+    /* Dark Love Theme Colors */
+    :root {
+      --dark-bg: #0a0a0a;
+      --dark-soft: #1a1a1a;
+      --dark-card: #2a2a2a;
+      --red-deep: #8b0000;
+      --red-bright: #ff4d4d;
+      --red-soft: #ff6b6b;
+      --gold-accent: #c1a57b;
+      --text-light: #f0f0f0;
+      --text-soft: #b0b0b0;
+    }
+
+    /* 3D Background Canvas */
+    #canvas-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+    }
+
+    /* 3D Floating Particles */
+    .particle-3d {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: var(--red-bright);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--red-bright);
+      animation: particleFloat 20s infinite linear;
+      z-index: -1;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) translateX(0) scale(0.5) rotateZ(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-20vh) translateX(100px) scale(1.5) rotateZ(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Floating Hearts Background */
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .heart-bg {
+      position: absolute;
+      color: rgba(139, 0, 0, 0.15);
+      font-size: 60px;
+      animation: floatBg 20s infinite;
+      filter: blur(2px);
+    }
+
+    @keyframes floatBg {
+      0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+      10% { opacity: 0.2; }
+      90% { opacity: 0.2; }
+      100% { transform: translateY(-20vh) rotate(720deg) scale(2); opacity: 0; }
+    }
+
+    /* 3D Rotating Shapes */
+    .rotating-shape {
+      position: fixed;
+      border: 2px solid rgba(139, 0, 0, 0.1);
+      animation: rotate3d 25s infinite linear;
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    .shape-1 {
+      width: 300px;
+      height: 300px;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      top: 5%;
+      left: 2%;
+      border-color: var(--red-deep);
+    }
+
+    .shape-2 {
+      width: 400px;
+      height: 400px;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      bottom: 5%;
+      right: 2%;
+      border-color: var(--gold-accent);
+      animation-duration: 30s;
+    }
+
+    .shape-3 {
+      width: 200px;
+      height: 200px;
+      border-radius: 50% 50% 30% 70% / 40% 60% 40% 60%;
+      top: 40%;
+      right: 30%;
+      border-color: var(--red-bright);
+      animation-duration: 20s;
+    }
+
+    @keyframes rotate3d {
+      0% { transform: rotate(0deg) scale(1); opacity: 0.2; }
+      50% { transform: rotate(180deg) scale(1.3); opacity: 0.4; }
+      100% { transform: rotate(360deg) scale(1); opacity: 0.2; }
+    }
+
+    /* Main Container */
+    .container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 2500px;
+      padding: 20px;
+    }
+
+    /* Page 1 - Welcome Page */
+    .welcome-page {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(135deg, rgba(10,10,10,0.9), rgba(26,26,26,0.9));
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      animation: pageGlow 4s infinite alternate;
+    }
+
+    @keyframes pageGlow {
+      0% { box-shadow: inset 0 0 50px rgba(139, 0, 0, 0.2); }
+      100% { box-shadow: inset 0 0 100px rgba(255, 77, 77, 0.4); }
+    }
+
+    .welcome-content {
+      text-align: center;
+      max-width: 900px;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px) rotateX(-10deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+      }
+    }
+
+    .welcome-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 5em;
+      font-weight: 700;
+      color: var(--red-bright);
+      text-shadow: 0 0 40px rgba(255, 77, 77, 0.6);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      animation: titlePulse 3s infinite alternate;
+    }
+
+    @keyframes titlePulse {
+      0% { text-shadow: 0 0 40px rgba(255, 77, 77, 0.6); }
+      100% { text-shadow: 0 0 80px rgba(255, 77, 77, 0.9), 0 0 120px rgba(193, 165, 123, 0.4); }
+    }
+
+    .welcome-subtitle {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5em;
+      color: var(--gold-accent);
+      margin-bottom: 30px;
+    }
+
+    .welcome-message {
+      font-size: 1.5em;
+      line-height: 1.8;
+      color: var(--text-soft);
+      margin-bottom: 50px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .welcome-buttons {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Professional 3D Buttons */
+    .btn {
+      padding: 18px 45px;
+      font-size: 1.2em;
+      font-weight: 500;
+      border: none;
+      border-radius: 60px;
+      background: linear-gradient(135deg, var(--red-deep), var(--red-bright));
+      color: white;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(139, 0, 0, 0.4);
+      letter-spacing: 0.5px;
+      font-family: 'Montserrat', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transform-style: preserve-3d;
+      transform: perspective(1000px) translateZ(0);
+    }
+
+    .btn:hover {
+      transform: perspective(1000px) translateZ(30px) translateY(-5px);
+      box-shadow: 0 25px 50px rgba(255, 77, 77, 0.6);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--red-deep);
+      color: var(--red-bright);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: linear-gradient(135deg, var(--red-deep), var(--red-bright));
+      color: white;
+      border-color: transparent;
+    }
+
+    /* 3D Card for Pages 2 & 3 */
+    .card-3d {
+      width: 650px;
+      max-width: 90vw;
+      min-height: 500px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+      display: none;
+    }
+
+    .card-3d.active {
+      display: block;
+      animation: cardAppear 0.8s ease;
+    }
+
+    @keyframes cardAppear {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotateY(-30deg) rotateX(20deg) translateZ(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotateY(0) rotateX(0) translateZ(0);
+      }
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      min-height: 500px;
+      backface-visibility: hidden;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 0 2px rgba(139, 0, 0, 0.3) inset,
+        0 0 40px rgba(255, 77, 77, 0.3);
+      background: rgba(42, 42, 42, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(139, 0, 0, 0.4);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: cardFloat 4s infinite alternate;
+    }
+
+    @keyframes cardFloat {
+      0% { transform: translateY(0) translateZ(0); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(139, 0, 0, 0.3) inset; }
+      100% { transform: translateY(-10px) translateZ(20px); box-shadow: 0 40px 80px rgba(255, 77, 77, 0.4), 0 0 0 3px rgba(255, 77, 77, 0.5) inset; }
+    }
+
+    /* Typography */
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8em;
+      font-weight: 700;
+      color: var(--red-bright);
+      margin-bottom: 15px;
+      text-shadow: 0 0 40px rgba(255, 77, 77, 0.6);
+      animation: textGlow 2s infinite alternate;
+    }
+
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 30px rgba(255, 77, 77, 0.5); }
+      100% { text-shadow: 0 0 60px rgba(255, 77, 77, 0.8), 0 0 90px var(--gold-accent); }
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8em;
+      font-weight: 600;
+      color: var(--gold-accent);
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.4em;
+      color: var(--red-soft);
+      margin: 10px 0 20px;
+    }
+
+    /* Simple One-Line Poem */
+    .poem-simple {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2em;
+      color: var(--text-light);
+      text-align: center;
+      margin: 30px 0;
+      padding: 20px 40px;
+      background: rgba(10, 10, 10, 0.6);
+      border-radius: 60px;
+      border: 2px solid var(--red-deep);
+      box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
+      animation: poemPulse 3s infinite alternate;
+      transform-style: preserve-3d;
+      transform: perspective(500px) translateZ(10px);
+    }
+
+    @keyframes poemPulse {
+      0% { box-shadow: 0 0 30px rgba(139, 0, 0, 0.3); transform: perspective(500px) translateZ(10px) scale(1); }
+      100% { box-shadow: 0 0 60px rgba(255, 77, 77, 0.6); transform: perspective(500px) translateZ(20px) scale(1.02); }
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      color: var(--text-soft);
+      text-align: center;
+      max-width: 80%;
+      margin: 15px 0;
+    }
+
+    /* Song Indicator */
+    .song-indicator {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1em;
+      color: var(--text-light);
+      margin: 20px 0;
+      padding: 12px 30px;
+      background: rgba(10, 10, 10, 0.8);
+      border-radius: 60px;
+      backdrop-filter: blur(5px);
+      border: 1px solid var(--red-deep);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateZ(20px);
+      animation: indicatorFloat 3s infinite alternate;
+    }
+
+    @keyframes indicatorFloat {
+      0% { transform: translateY(0) translateZ(20px); }
+      100% { transform: translateY(-8px) translateZ(30px); }
+    }
+
+    .song-indicator i {
+      color: var(--red-bright);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); color: var(--gold-accent); }
+    }
+
+    /* Audio Player */
+    .audio-player {
+      margin: 20px 0;
+      width: 100%;
+      max-width: 400px;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 80px;
+      padding: 15px 25px;
+      border: 1px solid var(--red-deep);
+      transform: translateZ(25px);
+      transition: all 0.3s ease;
+      animation: playerFloat 4s infinite alternate;
+    }
+
+    @keyframes playerFloat {
+      0% { transform: translateY(0) translateZ(25px); }
+      100% { transform: translateY(-8px) translateZ(35px); }
+    }
+
+    .audio-player:hover {
+      transform: translateZ(45px);
+      box-shadow: 0 0 40px rgba(255, 77, 77, 0.3);
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .player-controls button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--red-deep), var(--red-bright));
+      color: white;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-size: 1.2em;
+      flex-shrink: 0;
+      transform: translateZ(10px);
+    }
+
+    .player-controls button:hover {
+      transform: scale(1.2) translateZ(20px);
+      box-shadow: 0 0 40px rgba(255, 77, 77, 0.8);
+    }
+
+    .progress-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transform: translateZ(5px);
+    }
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red-deep), var(--gold-accent));
+      width: 0%;
+      transition: width 0.1s linear;
+      border-radius: 10px;
+    }
+
+    .time-display {
+      font-size: 0.85em;
+      color: var(--text-soft);
+      text-align: right;
+    }
+
+    /* Navigation Dots */
+    .nav-dots {
+      position: fixed;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%) translateZ(50px);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      z-index: 100;
+    }
+
+    .nav-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(139, 0, 0, 0.3);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      transform: translateZ(0);
+    }
+
+    .nav-dot.active {
+      background: var(--red-bright);
+      transform: scale(2) translateZ(30px);
+      box-shadow: 0 0 40px var(--red-bright);
+    }
+
+    .nav-dot:hover {
+      background: var(--gold-accent);
+      transform: scale(1.6) translateZ(15px);
+    }
+
+    .nav-dot::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--dark-card);
+      color: white;
+      padding: 6px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid var(--red-deep);
+      font-weight: 500;
+    }
+
+    .nav-dot:hover::before {
+      opacity: 1;
+      visibility: visible;
+      right: 35px;
+    }
+
+    /* Celebration Overlay */
+    .celebration-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    .celebration-item {
+      position: absolute;
+      animation: celebrate 4s ease-out forwards;
+      font-size: 35px;
+      filter: drop-shadow(0 0 15px rgba(255, 77, 77, 0.8));
+    }
+
+    @keyframes celebrate {
+      0% {
+        transform: scale(0) rotate(0deg) translateZ(0);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5) rotate(360deg) translateY(-100px) translateZ(100px);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(2) rotate(720deg) translateY(-200px) translateZ(200px);
+        opacity: 0;
+      }
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--dark-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 1s ease;
+    }
+
+    .loader {
+      text-align: center;
+      transform-style: preserve-3d;
+      animation: loaderSpin 3s infinite linear;
+    }
+
+    @keyframes loaderSpin {
+      0% { transform: rotateY(0deg) rotateX(0deg); }
+      50% { transform: rotateY(180deg) rotateX(180deg); }
+      100% { transform: rotateY(360deg) rotateX(360deg); }
+    }
+
+    .loader-heart {
+      font-size: 70px;
+      animation: loaderBeat 1.5s infinite;
+      color: var(--red-bright);
+    }
+
+    @keyframes loaderBeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.3); color: var(--gold-accent); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.3); color: var(--red-bright); }
+    }
+
+    .loader p {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: var(--text-soft);
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading">
+    <div class="loader">
+      <div class="loader-heart">❤️</div>
+      <p>Creating magic for you...</p>
+    </div>
+  </div>
+
+  <!-- 3D Background Canvas -->
+  <canvas id="canvas-bg"></canvas>
+  
+  <!-- 3D Rotating Shapes -->
+  <div class="rotating-shape shape-1"></div>
+  <div class="rotating-shape shape-2"></div>
+  <div class="rotating-shape shape-3"></div>
+
+  <!-- Floating Hearts Background -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <!-- Navigation Dots -->
+  <div class="nav-dots">
+    <div class="nav-dot active" data-tooltip="For You" onclick="showPage('welcome')"></div>
+    <div class="nav-dot" data-tooltip="Feel It?" onclick="showPage('page2')"></div>
+    <div class="nav-dot" data-tooltip="I Love You" onclick="showPage('page3')"></div>
+  </div>
+
+  <!-- Celebration Overlay -->
+  <div class="celebration-overlay" id="celebration"></div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Page 1 - Welcome -->
+    <div id="welcome" class="welcome-page active-page">
+      <div class="welcome-content">
+        <h1 class="welcome-title">For you</h1>
+        <p class="welcome-message">
+          You are my light in the dark<br>
+          In a world of shadows, you're my only glow...
+        </p>
+        <div class="welcome-buttons">
+          <button class="btn" onclick="showPage('page2')">
+            <i class="fas fa-heart"></i> Enter My Heart
+          </button>
+          <button class="btn btn-outline" onclick="playWelcomeMusic()">
+            <i class="fas fa-music"></i> Play Music
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 2 - Question with Celebration on Click -->
+    <div class="card-3d" id="page2">
+      <div class="card-face">
+        <h2>Do You Feel It?</h2>
+               
+        <!-- Simple one-line poem -->
+        <div class="poem-simple">
+          "You make my heart smile"
+        </div>
+        
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 30px;">
+          <button class="btn" onclick="feelItCelebration()">
+            <i class="fas fa-heart"></i> I Feel It ❤️
+          </button>
+          <button class="btn btn-outline" onclick="showPage('welcome')">
+            <i class="fas fa-undo"></i> Go Back
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 3 - I Love You with Beautiful Poem -->
+    <div class="card-3d" id="page3">
+      <div class="card-face">
+        <h1>I Love You</h1>
+       
+        
+        <!-- Professional one-line poem -->
+        <div class="poem-simple">
+          "I love you more than you know"
+        </div>
+        
+        <!-- Tamil Love Song -->
+        <div class="song-indicator">
+          <i class="fas fa-music"></i>
+          <span>Feel my love </span>
+          <i class="fas fa-heart"></i>
+        </div>
+        
+        <!-- Audio Player -->
+        <div class="audio-player">
+          <div class="player-controls">
+            <button onclick="togglePage3Music()" id="page3MusicBtn">
+              <i class="fas fa-play"></i>
+            </button>
+            <div class="progress-container">
+              <div class="progress-bar" onclick="seekPage3(event)">
+                <div class="progress" id="page3Progress"></div>
+              </div>
+              <div class="time-display" id="page3TimeDisplay">0:00 / 0:00</div>
+            </div>
+            <button onclick="togglePage3Repeat()" id="page3RepeatBtn">
+              <i class="fas fa-redo-alt"></i>
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 15px; margin-top: 20px;">
+          <button class="btn" onclick="startCelebration()">
+            <i class="fas fa-heart"></i> Celebrate
+          </button>
+          <button class="btn btn-outline" onclick="showPage('welcome')">
+            <i class="fas fa-home"></i> Home
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Element 1 - Welcome Music -->
+  <audio id="welcomeSong" loop preload="auto">
+    <source src="C:\Users\User\OneDrive\Desktop\forever-u\music2.mp3.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Audio Element 2 - Tamil Love Song -->
+  <audio id="tamilLoveSong" loop preload="auto">
+    <source src="C:\Users\User\OneDrive\Desktop\forever-u\music.mp3.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Loading Screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loading').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('loading').style.display = 'none';
+        }, 1000);
+      }, 2000);
+    });
+
+    // Create 3D Particles
+    for (let i = 0; i < 80; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle-3d';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 5 + 's';
+      particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+      particle.style.background = i % 3 === 0 ? 'var(--red-bright)' : i % 3 === 1 ? 'var(--gold-accent)' : 'var(--red-deep)';
+      particle.style.width = (Math.random() * 8 + 3) + 'px';
+      particle.style.height = particle.style.width;
+      document.body.appendChild(particle);
+    }
+
+    // Floating Hearts
+    function createBackgroundHeart() {
+      const hearts = ['❤️', '🖤', '💕', '💗', '🌹', '🌸'];
+      const container = document.getElementById('floatingHearts');
+      const heart = document.createElement('div');
+      heart.className = 'heart-bg';
+      heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.fontSize = (Math.random() * 80 + 40) + 'px';
+      heart.style.animationDuration = (Math.random() * 15 + 20) + 's';
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 35000);
+    }
+    setInterval(createBackgroundHeart, 1500);
+
+    // 3D Background Animation
+    const canvas = document.getElementById('canvas-bg');
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+
+    const particles = [];
+    for (let i = 0; i < 70; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        z: Math.random() * 1200,
+        radius: Math.random() * 4 + 1,
+        speed: (Math.random() - 0.5) * 1.2,
+        color: `rgba(139, 0, 0, ${Math.random() * 0.3})`
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.sort((a, b) => a.z - b.z);
+      
+      particles.forEach(p => {
+        const scale = 1000 / (1000 + p.z);
+        const x2d = p.x * scale;
+        const y2d = p.y * scale;
+        
+        ctx.beginPath();
+        ctx.arc(x2d, y2d, p.radius * scale, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+
+        p.z -= p.speed;
+        if (p.z < 0) {
+          p.z = 1200;
+          p.x = Math.random() * canvas.width;
+          p.y = Math.random() * canvas.height;
+        }
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // Audio Players
+    const welcomeAudio = document.getElementById('welcomeSong');
+    const tamilAudio = document.getElementById('tamilLoveSong');
+    let isWelcomePlaying = false;
+    let isPage3Playing = false;
+    let isPage3Repeating = true;
+
+    function playWelcomeMusic() {
+      if (isWelcomePlaying) {
+        welcomeAudio.pause();
+        isWelcomePlaying = false;
+      } else {
+        if (isPage3Playing) togglePage3Music();
+        welcomeAudio.play().catch(() => {
+          welcomeAudio.muted = true;
+          welcomeAudio.play().then(() => {
+            setTimeout(() => { welcomeAudio.muted = false; }, 1000);
+          });
+        });
+        isWelcomePlaying = true;
+      }
+    }
+
+    function togglePage3Music() {
+      if (isPage3Playing) {
+        tamilAudio.pause();
+        document.getElementById('page3MusicBtn').innerHTML = '<i class="fas fa-play"></i>';
+      } else {
+        if (isWelcomePlaying) {
+          welcomeAudio.pause();
+          isWelcomePlaying = false;
+        }
+        tamilAudio.play().catch(() => {
+          tamilAudio.muted = true;
+          tamilAudio.play().then(() => {
+            setTimeout(() => { tamilAudio.muted = false; }, 1000);
+          });
+        });
+        document.getElementById('page3MusicBtn').innerHTML = '<i class="fas fa-pause"></i>';
+      }
+      isPage3Playing = !isPage3Playing;
+    }
+
+    function togglePage3Repeat() {
+      isPage3Repeating = !isPage3Repeating;
+      tamilAudio.loop = isPage3Repeating;
+    }
+
+    tamilAudio.addEventListener('timeupdate', () => {
+      if (tamilAudio.duration) {
+        const percent = (tamilAudio.currentTime / tamilAudio.duration) * 100;
+        document.getElementById('page3Progress').style.width = percent + '%';
+        
+        const minutes = Math.floor(tamilAudio.currentTime / 60);
+        const seconds = Math.floor(tamilAudio.currentTime % 60);
+        const totalMinutes = Math.floor(tamilAudio.duration / 60);
+        const totalSeconds = Math.floor(tamilAudio.duration % 60);
+        
+        document.getElementById('page3TimeDisplay').textContent = 
+          `${minutes}:${seconds.toString().padStart(2, '0')} / ${totalMinutes}:${totalSeconds.toString().padStart(2, '0')}`;
+      }
+    });
+
+    function seekPage3(e) {
+      const bar = e.currentTarget;
+      const clickPosition = e.offsetX / bar.offsetWidth;
+      tamilAudio.currentTime = clickPosition * tamilAudio.duration;
+    }
+
+    // Page Navigation
+    function showPage(pageId) {
+      document.getElementById('welcome').classList.remove('active-page');
+      document.getElementById('page2').classList.remove('active');
+      document.getElementById('page3').classList.remove('active');
+      
+      if (pageId === 'welcome') {
+        document.getElementById('welcome').classList.add('active-page');
+      } else {
+        document.getElementById(pageId).classList.add('active');
+      }
+      
+      const dots = document.querySelectorAll('.nav-dot');
+      dots.forEach((dot, index) => {
+        if ((index === 0 && pageId === 'welcome') ||
+            (index === 1 && pageId === 'page2') ||
+            (index === 2 && pageId === 'page3')) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+      
+      if (pageId === 'page3') {
+        if (isWelcomePlaying) {
+          welcomeAudio.pause();
+          isWelcomePlaying = false;
+        }
+        setTimeout(() => {
+          if (!isPage3Playing) togglePage3Music();
+        }, 500);
+      } else {
+        if (isPage3Playing) {
+          tamilAudio.pause();
+          isPage3Playing = false;
+          document.getElementById('page3MusicBtn').innerHTML = '<i class="fas fa-play"></i>';
+        }
+      }
+    }
+
+    // Celebration Functions
+    function startCelebration() {
+      const celebration = document.getElementById('celebration');
+      const items = ['❤️', '💖', '💕', '💗', '🌹', '🌸', '🌺', '✨', '💫', '⭐', '🖤', '💘', '💓', '💝'];
+      
+      for (let i = 0; i < 200; i++) {
+        setTimeout(() => {
+          const item = document.createElement('div');
+          item.className = 'celebration-item';
+          item.innerHTML = items[Math.floor(Math.random() * items.length)];
+          item.style.left = Math.random() * 100 + '%';
+          item.style.top = Math.random() * 100 + '%';
+          item.style.fontSize = (Math.random() * 40 + 20) + 'px';
+          item.style.animationDuration = (Math.random() * 3 + 3) + 's';
+          item.style.animationDelay = Math.random() * 0.5 + 's';
+          celebration.appendChild(item);
+
+          setTimeout(() => {
+            item.remove();
+          }, 4000);
+        }, i * 10);
+      }
+    }
+
+    // Special celebration when clicking "I Feel It"
+    function feelItCelebration() {
+      // First show page 3 after a small delay
+      setTimeout(() => {
+        showPage('page3');
+      }, 1500);
+      
+      // Start massive celebration
+      const celebration = document.getElementById('celebration');
+      const items = ['❤️', '💖', '💕', '💗', '🌹', '🌸', '🌺', '✨', '💫', '⭐', '🖤', '💘', '💓', '💝', '🌷', '🌼'];
+      
+      // 300 hearts and flowers explosion!
+      for (let i = 0; i < 300; i++) {
+        setTimeout(() => {
+          const item = document.createElement('div');
+          item.className = 'celebration-item';
+          item.innerHTML = items[Math.floor(Math.random() * items.length)];
+          item.style.left = Math.random() * 100 + '%';
+          item.style.top = Math.random() * 100 + '%';
+          item.style.fontSize = (Math.random() * 50 + 25) + 'px';
+          item.style.animationDuration = (Math.random() * 4 + 3) + 's';
+          item.style.animationDelay = Math.random() * 0.3 + 's';
+          item.style.color = Math.random() > 0.5 ? 'var(--red-bright)' : 'var(--gold-accent)';
+          celebration.appendChild(item);
+
+          setTimeout(() => {
+            item.remove();
+          }, 4500);
+        }, i * 8); // Faster spawning for more intensity
+      }
+    }
+
+    // 3D Card Effect
+    const cards = document.querySelectorAll('.card-3d');
+    document.addEventListener('mousemove', (e) => {
+      cards.forEach(card => {
+        if (card.classList.contains('active')) {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `rotateY(${x * 20}deg) rotateX(${-y * 20}deg) translateZ(30px)`;
+        }
+      });
+    });
+
+    window.addEventListener('resize', resizeCanvas);
+    showPage('welcome');
+  </script>
+</body>
+</html>
